@@ -1,5 +1,5 @@
 <template>
-<form class="card auth-card">
+<form class="card auth-card" @submit.prevent="submitForm">
     <div class="card-content">
         <span class="card-title">Домашняя бухгалтерия</span>
         <div class="input-field">
@@ -23,7 +23,7 @@
 
         <p class="center">
             Нет аккаунта?
-            <a href="/">Зарегистрироваться</a>
+            <router-link to='/regiser'>Зарегистрироваться</router-link>
         </p>
     </div>
 </form>
@@ -31,6 +31,11 @@
 
 <script>
 export default {
-
+ name: 'login',
+ methods: {
+  submitForm() {
+   this.$router.push('/home')
+  }
+ }
 }
 </script>
