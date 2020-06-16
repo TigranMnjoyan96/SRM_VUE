@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Tue Jun 16 2020 16:41:55 GMT+0400 (Армения, стандартное время)
+------------------------------------------------------
+
+Modified files:
+* package.json
+* src/main.js
+* src/views/Login.vue
+* yarn.lock
+
+
+Created files:
+* .autogit/logs/log-16-5-2020-16-11-45.txt
+
+
+Deleted files:
+
+
+Renamed files:

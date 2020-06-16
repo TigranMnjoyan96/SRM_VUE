@@ -11,6 +11,8 @@ import 'materialize-css/dist/js/materialize.min.js'
 Vue.config.productionTip = false;
 Vue.filter('date', dateFilter)
 
+Vue.use(Vuelidate)
+
 new Vue({
   router,
   store,
