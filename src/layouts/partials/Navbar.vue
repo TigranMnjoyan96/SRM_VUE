@@ -5,7 +5,7 @@
                 <a href="#" @click.prevent="$emit('hideSidebar')">
                     <i class="material-icons black-text">dehaze</i>
                 </a>
-                <span class="black-text">{{ date }}</span>
+                <span class="black-text">{{ date | date }}</span>
             </div>
 
             <ul class="right hide-on-small-and-down">
@@ -23,7 +23,7 @@
                         </li>
                         <li class="divider" tabindex="-1"></li>
                         <li>
-                            <a href="#" class="black-text" @click.prevent="logOut">
+                            <a href="" class="black-text" @click.prevent="logOut">
                                 <i class="material-icons">assignment_return</i>Выйти
                             </a>
                         </li>
@@ -45,7 +45,9 @@ export default {
  },
  data() {
   return {
-   date: new Date()
+   date: new Date(),
+   interval: 0,
+   dropdown: null
   }
  },
  methods: {
@@ -54,17 +56,19 @@ export default {
   }
  },
  mounted() {
-  window.M.Dropdown.init(this.$refs.dropdown, {
+  this.dropdown = window.M.Dropdown.init(this.$refs.dropdown, {
    coverTrigger: false,
    hover: true
   }),
-  setInterval(() => {
+  this.interval = setInterval(() => {
    this.date = new Date()
   }, 1000)
  },
  beforeDestroy() {
-  console.log('destroy');
-  
+  clearInterval(this.interval)
+  if(this.dropdown && this.dropdown.destroy) {
+   this.dropdown.destroy()
+  }
  }
 }
 </script>
