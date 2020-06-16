@@ -18,7 +18,7 @@
               
             <label for="password">Пароль</label>
             <small class="helper-text invalid" v-if="$v.password.$dirty && !$v.password.required">password is required</small>
-            <small class="helper-text invalid" v-else-if="$v.password.$dirty && !$v.password.minLength">min length must be {{ $v.passord.$params.min }} now it's {{ password.length }}</small>
+            <small class="helper-text invalid" v-else-if="$v.password.$dirty && !$v.password.minLength">min length must be {{ $v.password.$params.minLength.min }}  now it's {{ password.length }}</small>
         </div>
     </div>
     <div class="card-action">
@@ -31,7 +31,7 @@
 
         <p class="center">
             Нет аккаунта?
-            <router-link to='/regiser'>Зарегистрироваться</router-link>
+            <router-link to='/register'>Зарегистрироваться</router-link>
         </p>
     </div>
 </form>
@@ -54,7 +54,11 @@ export default {
   password: {required, minLength: minLength(6)}
  },
  methods: {
+  
   submitHandler() { 
+  
+console.log(this.$v.password);
+
    if(this.$v.$invalid) {
     this.$v.$touch();
     return;
