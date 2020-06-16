@@ -5,7 +5,7 @@
                 <a href="#" @click.prevent="$emit('hideSidebar')">
                     <i class="material-icons black-text">dehaze</i>
                 </a>
-                <span class="black-text">12.12.12</span>
+                <span class="black-text">{{ currentTime }}</span>
             </div>
 
             <ul class="right hide-on-small-and-down">
@@ -38,9 +38,14 @@
 <script>
 export default {
  name: 'Navbar',
+ computed: {
+  currentTime() {
+   return new Date(Date.now()).toLocaleString();
+  }
+ },
  methods: {
   logOut() {
-   this.$route.push('/home');
+   this.$router.push('/login?message=logout');
   }
  },
  mounted() {
