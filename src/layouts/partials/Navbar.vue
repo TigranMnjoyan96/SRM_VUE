@@ -5,7 +5,7 @@
                 <a href="#" @click.prevent="$emit('hideSidebar')">
                     <i class="material-icons black-text">dehaze</i>
                 </a>
-                <span class="black-text">{{ currentTime }}</span>
+                <span class="black-text">{{ date }}</span>
             </div>
 
             <ul class="right hide-on-small-and-down">
@@ -43,6 +43,11 @@ export default {
    return new Date(Date.now()).toLocaleString();
   }
  },
+ data() {
+  return {
+   date: new Date()
+  }
+ },
  methods: {
   logOut() {
    this.$router.push('/login?message=logout');
@@ -52,7 +57,14 @@ export default {
   window.M.Dropdown.init(this.$refs.dropdown, {
    coverTrigger: false,
    hover: true
-  })
+  }),
+  setInterval(() => {
+   this.date = new Date()
+  }, 1000)
+ },
+ beforeDestroy() {
+  console.log('destroy');
+  
  }
 }
 </script>
