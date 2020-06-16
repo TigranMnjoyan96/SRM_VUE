@@ -25,14 +25,15 @@
       <input
           id="name"
           type="text"
-          class="validate"
+          v-model.trim="name"       
+          :class="{invalid: $v.password.$dirty && !$v.password.required}"
       >
       <label for="name">Имя</label>
-      <small class="helper-text invalid">Name</small>
+      <small class="helper-text invalid" v-if="$v.name.$dirty && !$v.name.required">name field is required</small>
     </div>
     <p>
       <label>
-        <input type="checkbox" />
+        <input type="checkbox" v-model="checked" />
         <span>С правилами согласен</span>
       </label>
     </p>
@@ -60,6 +61,10 @@
 
 
 <script>
+
+import {email, required, minLength} from 'vuelidate/lib/validators'
+
+
 export default {
  name: 'register',
  data() {
@@ -68,6 +73,28 @@ export default {
    password: '',
    name: '',
    checked: false
+  }
+ },
+ validations: {
+  email: {email, required},
+  password: {required, minLength},
+  name: {required},
+  checked: {checked: val => val}
+ },
+ methods: {
+  submitHandler() {
+   if(this.$v.$invalid) {
+    this.$v.$touch()
+    return 
+   }
+ const user = {
+  email: this.email,
+  password: this.password,
+  name: this.name
+ }
+
+ console.log(user);
+ this.$router.push('/')
   }
  }
 }
