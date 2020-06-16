@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Tue Jun 16 2020 15:41:37 GMT+0400 (Армения, стандартное время)
+------------------------------------------------------
+
+Modified files:
+* src/layouts/partials/Navbar.vue
+* src/main.js
+
+
+Created files:
+* .autogit/logs/log-16-5-2020-15-11-21.txt
+* src/filters/dateFilter.js
+
+
+Deleted files:
+
+
+Renamed files:
